@@ -19,10 +19,10 @@ mongoose
   */
 const Login = require("./models/Login");
 const Form14dayPatient = require("./models/Form14dayPatient");
-const PatientHistoryInformation = require('./models/PatientHistoryInformation');
-const QuestionForm14day = require('./models/QuestionForm14day ');
-const QuestionHealtform = require('./models/QuestionHealtform');
-const QuestionScreening = require('./models.QuestionScreening');
+const PatientHistoryInformation = require("./models/PatientHistoryInformation");
+const QuestionForm14day = require("./models/QuestionForm14day ");
+const QuestionHealtform = require("./models/QuestionHealtform");
+const QuestionScreening = require("./models/QuestionScreening");
 const RegisterParent = require("./models/RegisterParent");
 
 // for หมอ / พยาบาล login ?
@@ -61,11 +61,10 @@ app.post("/form14daypatient/add", (req, res) => {
   newForm14daypatient.save().then(() => res.json(newForm14daypatient));
 });
 
-app.get("/form14daypatients", async (req, res) => {
-  const form14daypatient = await Form14daypatient.find({});
-  res.json(form14daypatient);
+app.get("/form14dayPatients", async (req, res) => {
+  const form14daypatients = await Form14dayPatient.find({});
+  res.json(form14daypatients);
 });
-
 
 /*
 PatientHistoryInformation add 
@@ -78,12 +77,11 @@ app.post("/patientInfo/add", (req, res) => {
   patientInfo.save().then(() => res.json(patientInfo));
 });
 
-// PatientHistoryInformation get all 
-app.get("/patientInfos", (req, res) => {
-  const patientInfo = await PatientHistoryInformation.find({});
-  res.json(patientInfo);
+// PatientHistoryInformation get all
+app.get("/patientInfos", async (req, res) => {
+  const patientInfos = await PatientHistoryInformation.find({});
+  res.json(patientInfos);
 });
-
 
 /*
 QuestionForm14day add
@@ -98,13 +96,10 @@ app.post("/questionForm14day/add", (req, res) => {
 /*
 QuestionForm14day get all 
 */
-app.get("/questionForm14days", (req, res) => {
+app.get("/questionForm14days", async (req, res) => {
   const questionForm14days = await QuestionForm14day.find({});
   res.json(questionForm14days);
 });
-
-
-
 
 /*
 QuestionHealtform add 
@@ -120,11 +115,10 @@ app.post("/questionHealtform/add", (req, res) => {
 /*
 QuestionHealtform get all  
 */
-app.get("/questionHealtforms", (req, res) => {
+app.get("/questionHealtforms", async (req, res) => {
   const questionHealtform = await QuestionHealtform.find({});
   res.json(questionHealtform);
 });
-
 
 /*
 QuestionScreening add 
@@ -140,7 +134,7 @@ app.post("/questionScreening/add", (req, res) => {
 /*
 QuestionScreening get all  
 */
-app.get("/questionScreenings", (req, res) => {
+app.get("/questionScreenings", async (req, res) => {
   const questionHealtform = await QuestionScreening.find({});
   res.json(questionHealtform);
 });
@@ -164,7 +158,6 @@ app.get("/registers", async (req, res) => {
   const registers = await RegisterParent.find({});
   res.json(registers);
 });
-
 
 const port = 3000;
 app.listen(port, () => console.log("Server running..."));
